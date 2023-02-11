@@ -15,7 +15,7 @@ type Eyecatch = {
   width: string;
 };
 
-type Content = {
+export type Content = {
   id: string;
   createdAt: string;
   updatedAt: string;
