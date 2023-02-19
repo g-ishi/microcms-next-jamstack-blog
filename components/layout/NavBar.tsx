@@ -1,4 +1,4 @@
-export const NavBar = () => {
+export const NavBar: React.FC = (props) => {
   return <h2>NavBar</h2>;
 };
 

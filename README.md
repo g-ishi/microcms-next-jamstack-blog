@@ -44,3 +44,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 storybook とのインテグレーション手順
 
 https://storybook.js.org/blog/get-started-with-storybook-and-next-js/
+
+next.js のプロジェクトルートからの import を storybook に認識させる方法
+
+https://github.com/storybookjs/storybook/issues/11639#issuecomment-801724587
