@@ -11,7 +11,27 @@ export default {
 const Template: ComponentStory<typeof NavBar> = (args) => <NavBar {...args} />;
 
 export const Primary = Template.bind({});
-// Primary.args = {
-//   primary: true,
-//   label: 'Button',
-// };
+Primary.args = {
+  pageTitle: {
+    title: 'Perfect Company',
+    link: '/',
+  },
+  navItems: [
+    {
+      title: 'Blogs',
+      link: '/blogs',
+    },
+    {
+      title: 'Solutions',
+      link: '/solutions',
+    },
+    {
+      title: 'Cases',
+      link: '/cases',
+    },
+    {
+      title: 'Members',
+      link: '/members',
+    },
+  ],
+};
