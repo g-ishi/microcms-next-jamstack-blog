@@ -37,7 +37,7 @@ const HomePage: NextPage<Home> = ({ blogs }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Hello World</h1>
+        <h1 className="text-3xl font-bold underline">Hello World</h1>
         {blogs.map((blog, i) => {
           return <div key={i}>{blog.title}</div>;
         })}
