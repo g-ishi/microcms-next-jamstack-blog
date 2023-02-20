@@ -35,7 +35,11 @@ const FOOTER = {
   phoneNumber: 'xx-xxxx-xxxx-xxxx',
 };
 
-const Layout = ({ children }: { children: ReactNode }) => {
+interface Layout {
+  children: ReactNode;
+}
+
+const Layout: React.FC<Layout> = ({ children }) => {
   return (
     <>
       <NavBar {...NAV} />
