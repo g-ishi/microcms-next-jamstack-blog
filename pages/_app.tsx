@@ -4,7 +4,7 @@ import { googleTagManagerId } from '../utils/gtm';
 import GoogleTagManager, {
   GoogleTagManagerId,
 } from '../components/GoogleTagManager';
-import Layout from '@/components/layout/Layout';
+import Layout from '@/components/layout';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

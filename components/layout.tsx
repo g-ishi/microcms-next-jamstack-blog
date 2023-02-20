@@ -1,5 +1,5 @@
-import NavBar, { NavBarProps } from './NavBar';
-import Footer from './Footer';
+import NavBar, { NavBarProps } from './layouts/NavBar';
+import Footer from './layouts/Footer';
 import { ReactNode } from 'react';
 
 const NAV: NavBarProps = {
