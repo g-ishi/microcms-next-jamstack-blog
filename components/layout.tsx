@@ -20,10 +20,6 @@ const NAV: NavBarProps = {
       title: 'Cases',
       link: '/cases',
     },
-    {
-      title: 'Members',
-      link: '/members',
-    },
   ],
 };
 
