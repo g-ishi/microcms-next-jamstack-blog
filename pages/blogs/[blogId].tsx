@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import ContentDetail from '@/components/ui/ContentDetail';
 import { client } from '@/api';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<BlogParams> = async () => {
   const res = await client.blogs.$get();
   const paths = res.contents.map(({ id }) => {
     return {
@@ -19,10 +20,16 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  console.log(params);
+// getStaticPathsとgetStaticPropsの間のインターフェース
+interface BlogParams extends ParsedUrlQuery {
+  blogId: string;
+}
+
+export const getStaticProps: GetStaticProps<BlogProps, BlogParams> = async ({
+  params,
+}) => {
   const { title, mainContent, updatedAt, image, personInCharge } =
-    await client.blogs._blogId(params.blogId).$get();
+    await client.blogs._blogId(params!.blogId).$get();
   return {
     props: {
       content: {
@@ -39,7 +46,20 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-const BlogDetail: NextPage = ({ content }) => {
+interface BlogProps {
+  content: {
+    title: string;
+    mainContent: string;
+    date: string;
+    personInCharge: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+  };
+}
+
+const BlogDetail: NextPage<BlogProps> = ({ content }) => {
   const router = useRouter();
   const { blogId } = router.query;
 

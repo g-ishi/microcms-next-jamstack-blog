@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps } from 'next';
 import ContentList, { ContentListProps } from '@/components/ui/ContentList';
 import { client } from '@/api';
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<ContentListProps> = async () => {
   const res = await client.blogs.$get();
   const contents = res.contents.map(
     ({
@@ -35,11 +35,7 @@ export const getStaticProps = async () => {
   };
 };
 
-interface BlogsPage {
-  contents: ContentListProps;
-}
-
-const BlogsPage: NextPage<BlogsPage> = ({ contents }) => {
+const BlogsPage: NextPage<ContentListProps> = ({ contents }) => {
   return <ContentList contents={contents} />;
 };
 
