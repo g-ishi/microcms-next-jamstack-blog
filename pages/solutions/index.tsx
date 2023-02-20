@@ -1,7 +1,47 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
+import ContentList, { ContentListProps } from '@/components/ui/ContentList';
+import { client } from '@/api';
 
-const SolutionsPage: NextPage = () => {
-  return <h1>Solutions</h1>;
+export const getStaticProps: GetStaticProps<ContentListProps> = async () => {
+  const res = await client.blogs.$get();
+  const contents = res.contents.map(
+    ({
+      id,
+      title,
+      shortDescription,
+      mainContent,
+      image,
+      personInCharge,
+      updatedAt,
+    }) => {
+      return {
+        link: `/solutions/${id}`,
+        title,
+        shortDescription,
+        mainContent,
+        image: {
+          src: image.src.url,
+          alt: image.alt,
+        },
+        personInCharge,
+        date: updatedAt,
+      };
+    }
+  );
+  return {
+    props: {
+      contents,
+    },
+  };
+};
+
+const SolutionsPage: NextPage<ContentListProps> = ({ contents }) => {
+  return (
+    <>
+      <p className="my-5 text-4xl">Solutions</p>
+      <ContentList contents={contents} />
+    </>
+  );
 };
 
 export default SolutionsPage;

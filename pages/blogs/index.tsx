@@ -36,7 +36,12 @@ export const getStaticProps: GetStaticProps<ContentListProps> = async () => {
 };
 
 const BlogsPage: NextPage<ContentListProps> = ({ contents }) => {
-  return <ContentList contents={contents} />;
+  return (
+    <>
+      <p className="my-5 text-4xl">Blogs</p>
+      <ContentList contents={contents} />
+    </>
+  );
 };
 
 export default BlogsPage;
