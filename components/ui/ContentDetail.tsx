@@ -24,7 +24,7 @@ const ContentDetail: React.FC<ContentDetailProps> = ({
         <p>{personInCharge}</p>
       </div>
       <img
-        className="w-full"
+        className="aspect-video w-full object-cover"
         width="400"
         height="300"
         src={image.src}
