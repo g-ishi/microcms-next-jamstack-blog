@@ -24,7 +24,7 @@ const ListItem: React.FC<ListItemProps> = ({
     <Link href={link}>
       <div className="rounded border border-black p-3">
         <img
-          className="w-full"
+          className="aspect-square w-full object-cover"
           width="400"
           height="300"
           src={image.src}

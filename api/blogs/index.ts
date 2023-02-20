@@ -1,20 +1,6 @@
 import { MicroCMSListResponse, MicroCMSQueries } from 'microcms-js-sdk';
 
-type Category = {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  name: string;
-};
-
-type Eyecatch = {
-  url: string;
-  height: string;
-  width: string;
-};
-
+// ブログコンテンツの型
 export type Content = {
   id: string;
   createdAt: string;
@@ -22,9 +8,17 @@ export type Content = {
   publishedAt: string;
   revisedAt: string;
   title: string;
-  content: string;
-  eyecatch: Eyecatch;
-  category: Category;
+  shortDescription: string;
+  mainContent: string;
+  image: {
+    src: {
+      url: string;
+      height: string;
+      width: string;
+    };
+    alt: string;
+  };
+  personInCharge: string;
 };
 
 export type Methods = {

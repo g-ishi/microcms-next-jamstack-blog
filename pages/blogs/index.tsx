@@ -1,85 +1,46 @@
-import type { NextPage } from 'next';
-import ContentList from '@/components/ui/ContentList';
+import type { NextPage, GetStaticProps } from 'next';
+import ContentList, { ContentListProps } from '@/components/ui/ContentList';
+import { client } from '@/api';
 
-const _contents = {
-  contents: [
-    {
-      link: 'blogs/1',
-      image: {
-        src: 'https://images.unsplash.com/photo-1676614722679-8ab239411924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80',
-        alt: 'external-image',
-      },
-      title: 'item-title',
-      shortDescription:
-        'みなも前いよいよその発見屋という方の所をなるますた。あたかも場合から相違年はよくその下宿べきでまでがやるているたがも講義なりませうと、当然にもしたたんませ。絵に要らですのはやはり前をすでにですまします。',
-      date: '2023/02/28',
-      personInCharge: 'person-in-charge',
+export const getStaticProps = async () => {
+  const res = await client.blogs.$get();
+  const contents = res.contents.map(
+    ({
+      id,
+      title,
+      shortDescription,
+      mainContent,
+      image,
+      personInCharge,
+      updatedAt,
+    }) => {
+      return {
+        link: `/blogs/${id}`,
+        title,
+        shortDescription,
+        mainContent,
+        image: {
+          src: image.src.url,
+          alt: image.alt,
+        },
+        personInCharge,
+        date: updatedAt,
+      };
+    }
+  );
+  return {
+    props: {
+      contents,
     },
-    {
-      link: 'blogs/1',
-      image: {
-        src: 'https://images.unsplash.com/photo-1676614722679-8ab239411924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80',
-        alt: 'external-image',
-      },
-      title: 'item-title',
-      shortDescription:
-        'みなも前いよいよその発見屋という方の所をなるますた。あたかも場合から相違年はよくその下宿べきでまでがやるているたがも講義なりませうと、当然にもしたたんませ。絵に要らですのはやはり前をすでにですまします。',
-      date: '2023/02/28',
-      personInCharge: 'person-in-charge',
-    },
-    {
-      link: 'blogs/1',
-      image: {
-        src: 'https://images.unsplash.com/photo-1676614722679-8ab239411924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80',
-        alt: 'external-image',
-      },
-      title: 'item-title',
-      shortDescription:
-        'みなも前いよいよその発見屋という方の所をなるますた。あたかも場合から相違年はよくその下宿べきでまでがやるているたがも講義なりませうと、当然にもしたたんませ。絵に要らですのはやはり前をすでにですまします。',
-      date: '2023/02/28',
-      personInCharge: 'person-in-charge',
-    },
-    {
-      link: 'blogs/1',
-      image: {
-        src: 'https://images.unsplash.com/photo-1676614722679-8ab239411924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80',
-        alt: 'external-image',
-      },
-      title: 'item-title',
-      shortDescription:
-        'みなも前いよいよその発見屋という方の所をなるますた。あたかも場合から相違年はよくその下宿べきでまでがやるているたがも講義なりませうと、当然にもしたたんませ。絵に要らですのはやはり前をすでにですまします。',
-      date: '2023/02/28',
-      personInCharge: 'person-in-charge',
-    },
-    {
-      link: 'blogs/1',
-      image: {
-        src: 'https://images.unsplash.com/photo-1676614722679-8ab239411924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80',
-        alt: 'external-image',
-      },
-      title: 'item-title',
-      shortDescription:
-        'みなも前いよいよその発見屋という方の所をなるますた。あたかも場合から相違年はよくその下宿べきでまでがやるているたがも講義なりませうと、当然にもしたたんませ。絵に要らですのはやはり前をすでにですまします。',
-      date: '2023/02/28',
-      personInCharge: 'person-in-charge',
-    },
-    {
-      link: 'blogs/1',
-      image: {
-        src: 'https://images.unsplash.com/photo-1676614722679-8ab239411924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80',
-        alt: 'external-image',
-      },
-      title: 'item-title',
-      shortDescription:
-        'みなも前いよいよその発見屋という方の所をなるますた。あたかも場合から相違年はよくその下宿べきでまでがやるているたがも講義なりませうと、当然にもしたたんませ。絵に要らですのはやはり前をすでにですまします。',
-      date: '2023/02/28',
-      personInCharge: 'person-in-charge',
-    },
-  ],
+  };
 };
 
-const BlogsPage: NextPage = () => {
-  return <ContentList {..._contents} />;
+interface BlogsPage {
+  contents: ContentListProps;
+}
+
+const BlogsPage: NextPage<BlogsPage> = ({ contents }) => {
+  return <ContentList contents={contents} />;
 };
 
 export default BlogsPage;
