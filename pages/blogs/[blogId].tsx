@@ -67,7 +67,7 @@ const BlogDetail: NextPage<BlogProps> = ({ content }) => {
   return (
     <>
       <Head>
-        <title>Case List Page</title>
+        <title>Blog Detail Page</title>
       </Head>
       <ContentDetail {...content} />
     </>
