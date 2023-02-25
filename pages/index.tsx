@@ -54,17 +54,17 @@ const HomePage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Sample microCMS Blog</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Top Page</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <div className="my-20">
+        <div className='my-20'>
           <MainBanner {...MAIN_BANNER} />
         </div>
         {SUB_BANNERS.map((item, i) => {
           return (
-            <div key={i} className="my-16">
+            <div key={i} className='my-16'>
               <SubBanner {...item} />
             </div>
           );

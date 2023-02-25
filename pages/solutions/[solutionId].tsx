@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import ContentDetail from '@/components/ui/ContentDetail';
 import { client } from '@/api';
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
@@ -63,7 +64,14 @@ const BlogDetail: NextPage<BlogProps> = ({ content }) => {
   const router = useRouter();
   const { solutionId } = router.query;
 
-  return <ContentDetail {...content} />;
+  return (
+    <>
+      <Head>
+        <title>Solution Detail Page</title>
+      </Head>
+      <ContentDetail {...content} />
+    </>
+  );
 };
 
 export default BlogDetail;

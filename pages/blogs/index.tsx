@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
 import ContentList, { ContentListProps } from '@/components/ui/ContentList';
 import { client } from '@/api';
+import Head from 'next/head';
 
 export const getStaticProps: GetStaticProps<ContentListProps> = async () => {
   const res = await client.blogs.$get();
@@ -38,7 +39,10 @@ export const getStaticProps: GetStaticProps<ContentListProps> = async () => {
 const BlogsPage: NextPage<ContentListProps> = ({ contents }) => {
   return (
     <>
-      <p className="my-5 text-4xl">Blogs</p>
+      <Head>
+        <title>Blog List Page</title>
+      </Head>
+      <p className='my-5 text-4xl'>Blogs</p>
       <ContentList contents={contents} />
     </>
   );
