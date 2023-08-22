@@ -41,6 +41,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Next.js + MicroCMS + Vercel で Jamstack 構成を試した見たアプリケーション
 
+Git コミットすると以下の URL にアプリケーションがデプロイされる。
+
+https://microcms-next-jamstack-blog-3tou.vercel.app/
+
 ## メモ
 
 - storybook とのインテグレーション手順
