@@ -39,22 +39,24 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # microcms-next-jamstack-blog
 
+Next.js + MicroCMS + Vercel で Jamstack 構成を試した見たアプリケーション
+
 ## メモ
 
-storybook とのインテグレーション手順
+- storybook とのインテグレーション手順
 
 https://storybook.js.org/blog/get-started-with-storybook-and-next-js/
 
-next.js のプロジェクトルートからの import を storybook に認識させる方法
+- next.js のプロジェクトルートからの import を storybook に認識させる方法
 
 https://github.com/storybookjs/storybook/issues/11639#issuecomment-801724587
 
-tailwind を storybook に認識させる方法
+- tailwind を storybook に認識させる方法
 
 https://zenn.dev/youichiro/articles/d625e602ed47c1#tailwind-css%E3%82%92storybook%E3%81%A7%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80
 
-layout(に限らないかもしれないけど)の注意点
+- layout(に限らないかもしれないけど)の注意点
 
 https://nextjs.org/docs/basic-features/layouts
 
-フォルダ名が大文字(キャメルケース)とかだと vercel 側で import エラーになるみたい。
+- フォルダ名が大文字(キャメルケース)とかだと vercel 側で import エラーになるみたい。
